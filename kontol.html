@@ -1,0 +1,670 @@
+<marquee>
+  <p>__________________________________________________________________________________</p>
+</marquee>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio V6 - Awal (web)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a0c0c;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ANIMASI HALUS */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: #2c1515;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(255, 77, 77, 0.2);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4d4d;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            background-color: #1a0c0c;
+            flex-wrap: wrap;
+            gap: 40px;
+            min-height: 90vh;
+        }
+
+        .hero-text {
+            flex: 1 1 400px;
+            animation: fadeInLeft 1s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero-text p:first-child {
+            color: #ff9999;
+            font-size: 20px;
+            margin-bottom: 10px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            animation: fadeIn 1.4s ease;
+        }
+
+        .hero-text h1 span {
+            color: #ff4d4d;
+            border-bottom: 3px solid #ff4d4d;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 5px #ff4d4d; }
+            50% { text-shadow: 0 0 20px #ff4d4d; }
+            100% { text-shadow: 0 0 5px #ff4d4d; }
+        }
+
+        .hero-text p {
+            color: #e0b3b3;
+            margin-bottom: 30px;
+            max-width: 500px;
+            animation: fadeIn 1.6s ease;
+        }
+
+        /* BUTTON ANIMASI 3D */
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: #ff4d4d;
+            border: 2px solid #ff4d4d;
+            padding: 12px 30px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: fadeInUp 1.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #ff4d4d;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: #1a0c0c;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 77, 77, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        /* HERO IMAGE */
+        .hero-img {
+            flex: 1 1 300px;
+            text-align: center;
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero-img img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #ff4d4d;
+            box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            transition: all 0.5s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); box-shadow: 0 15px 40px rgba(255, 77, 77, 0.6); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-img img:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: #ff9999;
+            box-shadow: 0 0 50px #ff4d4d;
+        }
+
+        /* PROFILE SECTION */
+        .profile {
+            padding: 80px 10%;
+            background-color: #2c1515;
+            text-align: center;
+        }
+
+        .profile h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ff4d4d;
+            animation: lineExpand 1s ease;
+        }
+
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+
+        .profile p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e0b3b3;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* SKILL SECTION DENGAN PROGRESS BAR */
+        .skills-section {
+            padding: 80px 10%;
+            background-color: #1a0c0c;
+        }
+
+        .skills-section h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #ff4d4d;
+            margin-bottom: 50px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #3d2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #ff4d4d;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 15px #ff4d4d;
+        }
+
+        /* SERVICE CARDS */
+        .services-section {
+            padding: 80px 10%;
+            background-color: #2c1515;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #ff4d4d;
+            margin-bottom: 50px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,77,77,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #ff4d4d;
+            box-shadow: 0 20px 40px rgba(255, 77, 77, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card i {
+            font-size: 50px;
+            color: #ff4d4d;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .service-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card p {
+            color: #e0b3b3;
+            line-height: 1.6;
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            padding: 80px 10%;
+            text-align: center;
+            background-color: #1a0c0c;
+        }
+
+        #contact h2 {
+            color: #ff4d4d;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e0b3b3;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            color: #ff4d4d;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #ff4d4d;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #2c1515;
+            color: #e0b3b3;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                min-height: auto;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn {
+                margin: 5px;
+            }
+
+            .hero-img img {
+                max-width: 250px;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* LOADING ANIMATION */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a0c0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 1.5s forwards;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #3d2a2a;
+            border-top: 5px solid #ff4d4d;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* SMOOTH SCROLL LANJUTAN */
+        .progress.animated {
+            width: var(--width);
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADING ANIMATION -->
+    <div class="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Portfolio V6</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <p>Hello, I am</p>
+            <h1><span>Awal</span> Web Developer</h1>
+            <p>Membuat website modern, cepat, dan futuristik dengan desain keren dan performa tinggi.</p>
+            <a href="#" class="btn">Download CV</a>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <div class="hero-img">
+            <img src="images.jpg" alt="Foto Profil Awal" onerror="this.src='https://via.placeholder.com/350x350/ff4d4d/ffffff?text=FOTO'">
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="profile" id="about">
+        <h2>About Me</h2>
+        <p>Saya adalah pengembang web yang berfokus pada tampilan modern, responsif, dan futuristik. Dengan pengalaman dalam berbagai teknologi terkini, saya siap membantu mewujudkan website impian Anda. Saya percaya bahwa desain yang baik adalah perpaduan antara estetika dan fungsionalitas.</p>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills-section" id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>HTML/CSS</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>JavaScript</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>React</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>UI/UX Design</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section" id="services">
+        <h2>My Services</h2>
+        <div class="cards-container">
+            <div class="service-card">
+                <div>🌐</div>
+                <h3>Web Development</h3>
+                <p>Membangun website modern, responsif, dan cepat dengan teknologi terkini.</p>
+            </div>
+            <div class="service-card">
+                <div>🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Mendesain tampilan yang menarik dan pengalaman pengguna yang intuitif.</p>
+            </div>
+            <div class="service-card">
+                <div>📱</div>
+                <h3>Mobile Responsive</h3>
+                <p>Website yang tampil sempurna di semua perangkat, dari desktop hingga mobile.</p>
+            </div>
+            <div class="service-card">
+                <div>⚡</div>
+                <h3>Performance Optimization</h3>
+                <p>Optimasi kecepatan dan performa website untuk pengalaman terbaik.</p>
+            </div>
+        </div>
+    </section>
+
+<!-- contact SECTION -->
+<section style="padding: 60px 10%; background-color: #2c1515;">
+    <h2 style="text-align: center; font-size: 36px; color: #ff4d4d; margin-bottom: 40px;">Connect With Me</h2>
+    
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; max-width: 1000px; margin: 0 auto;">
+        
+        <!-- WHATSAPP - Nomor terbaru +62 878-2215-0787 -->
+        <a href="https://wa.me/6287822150787" target="_blank" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); padding: 18px 30px; border-radius: 60px; text-decoration: none; border: 2px solid #ff4d4d; transition: all 0.3s; min-width: 260px; color: white;"
+           onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(255,77,77,0.4)'; this.style.background='rgba(255,77,77,0.15)';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(255,255,255,0.05)';">
+            <span style="font-size: 30px; margin-right: 18px; filter: drop-shadow(0 0 5px #ff4d4d);">📱</span>
+            <div style="display: flex; flex-direction: column;">
+                <span style="color: #ff9999; font-size: 13px; letter-spacing: 1px;">WHATSAPP</span>
+                <span style="color: white; font-size: 16px; font-weight: 600;">+62 878-2215-0787</span>
+            </div>
+        </a>
+
+        <!-- EMAIL - Email baru awalputra342@gmail.com -->
+        <a href="mailto:awalputra342@gmail.com" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); padding: 18px 30px; border-radius: 60px; text-decoration: none; border: 2px solid #ff4d4d; transition: all 0.3s; min-width: 260px; color: white;"
+           onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(255,77,77,0.4)'; this.style.background='rgba(255,77,77,0.15)';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='rgba(255,255,255,0.05)';">
+            <span style="font-size: 30px; margin-right: 18px; filter: drop-shadow(0 0 5px #ff4d4d);">📧</span>
+            <div style="display: flex; flex-direction: column;">
+                <span style="color: #ff9999; font-size: 13px; letter-spacing: 1px;">EMAIL</span>
+                <span style="color: white; font-size: 16px; font-weight: 600;">awalputra342@gmail.com</span>
+            </div>
+     
